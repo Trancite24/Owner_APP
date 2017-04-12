@@ -2,3 +2,19 @@
     align-content: center;
     height: 25%;
 }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    align-content: center;
+}
+
+td, th {
+    border: 1px solid #50b5bb;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
