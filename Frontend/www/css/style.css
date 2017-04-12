@@ -190,13 +190,12 @@ padding:0px;
 width:100%;
 margin:auto;
 position:relative;
-background-color:#000000;
 }
 .user_thumb_container img{
 display:block;
 max-width:100%;
 z-index:777;
-opacity:0.4;
+opacity:0;
 }
 .user_thumb{
 position:absolute;
@@ -311,10 +310,11 @@ height:100%;
 text-align:center;
 }
 .logo{
-margin:20% 0 0 0;
+margin:10% 0 0 0;
 }
 .logo img{
-max-width:100%;
+max-width:50%;
+max-height:50%;
 display:inline-block;
 }
 .logo h2{
@@ -334,10 +334,11 @@ padding:0px;
 .slide_info{
 width:100%;
 text-align:center;
-font-size:14px;
+font-size:20px;
 letter-spacing:3px;
 position: absolute;
-bottom: 15px;
+bottom: 25px;
+font-color:white;
 }
 /*===============================================*/
 /* 6. PAGES LAYOUT */
