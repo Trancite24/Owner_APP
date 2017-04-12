@@ -3,7 +3,7 @@ function loadData(){
     jQuery.ajax({
         type: "GET",
         url: 'http://titansmora.org/Yung/BusDetails/busDetails.php',
-        dataType: 'text/html',
+        dataType: 'json',
         data: {Bus_Number: 'nn1111'},
         success:function (obj) {
 

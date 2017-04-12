@@ -1,26 +1,36 @@
-function loadData(){
+(function (global) {
+    "use strict";
 
-    openModal();
-    jQuery.ajax({
-        type: "POST",
-        url: 'http://foody.6te.net/Model/DataAccess/like_Model.php',
-        dataType: 'json',
-        data: {id: dishid},
-        success:function (obj) {
-            if(obj==null){
-                closeModal();
-                document.getElementById('log1').innerHTML +='<center>No likes</center>';
-            }
-            for (i = 0; i < obj.length; i++) {
-                document.getElementById('log1').innerHTML +=
-                    '<li class="message-left animated fadeinup delay-2">'+
-                    '<img alt="" src="'+obj[i].photo+'">'+
-                    '<div class="message first">'+
-                    '<b><p>'+obj[i].first_name+" "+ obj[i].last_name+'</p></b>'+
-                    '</div>'+
-                    '</li>';
-            }
-            closeModal();
+    function onDeviceReady() {
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("resume", onResume, false);
+        loadMapsApi();
+    }
+
+    function onOnline() {
+        loadMapsApi();
+    }
+
+    function onResume() {
+        loadMapsApi();
+    }
+
+    function loadMapsApi() {
+        if (navigator.connection.type === Connection.NONE || (global.google !== undefined && global.google.maps)) {
+            return;
         }
-    });
-}
+
+        //TODO: Add your own Google maps API key to the URL below.
+        $.getScript('https://maps.googleapis.com/maps/api/js?key= AIzaSyBXmwYKMPb33ISqHZX0EYK253R2t8d6ZYs&callback=initMap');
+    }
+
+    global.onMapsApiLoaded = function () {
+        // Maps API loaded and ready to be used.
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 8,
+            center: new google.maps.LatLng(-34.397, 150.644)
+        });
+    };
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+})(window);
